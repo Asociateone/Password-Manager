@@ -19,7 +19,7 @@ class Login
         if (!isset($_SESSION)) {
             $this->conn->connect();
 
-            $query = "SELECT * FROM password.Users WHERE `Username` = '$user[username]'";
+            $query = "SELECT * FROM Users WHERE `Username` = '$user[username]'";
 
             $login = $this->conn->sendQuery($query);
 
