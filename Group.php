@@ -7,4 +7,3 @@
     $password = new UserPasswordManager();
 
     $password->addAccount($_REQUEST);
-
