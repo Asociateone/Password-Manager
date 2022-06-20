@@ -9,18 +9,12 @@ class MySQL
     private string $host;
     private string $username;
     private string $password;
+    private string $database;
     private object $conn;
-
-    public function __construct(string $host, string $username, string $password)
-    {
-        $this->host = $host;
-        $this->username = $username;
-        $this->password = $password;
-    }
 
     public function connect()
     {
-        return $this->conn = new mysqli($this->host, $this->username, $this->password);
+        return $this->conn = new mysqli('db', 'User', 'Password', 'Password_Manager');
     }
 
     public function disconnect()
@@ -37,7 +31,7 @@ class MySQL
 
     public function createUserTable()
     {
-        $query = "CREATE TABLE Password_Manager.Users (
+        $query = "CREATE TABLE Users (
             ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             Username varchar(200) NOT NULL,
             Password varchar(255) NOT NULL,
@@ -50,7 +44,7 @@ class MySQL
 
     public function createAccountTable()
     {
-        $query = "CREATE TABLE Password_Manager.User_Accounts (
+        $query = "CREATE TABLE User_Accounts (
             ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             User_id int(11) NOT NULL,
             Username varchar(200) NOT NULL,

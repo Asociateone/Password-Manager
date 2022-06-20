@@ -12,7 +12,7 @@ class UserPasswordManager
 
     public function __construct()
     {
-        $this->conn = new Mysql('localhost:8889', 'root', 'root');
+        $this->conn = new Mysql();
     }
 
     public function addAccount($credentials)

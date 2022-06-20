@@ -4,7 +4,7 @@
 
     use App\Server\MySQL;
 
-    $mysql = new MySQL('db', 'User', 'Password');
+    $mysql = new MySQL();
 
     $mysql->createAccountTable();
 

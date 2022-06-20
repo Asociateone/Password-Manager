@@ -11,7 +11,7 @@ class Login
 
     public function __construct()
     {
-        $this->conn = new MySQL('localhost:8889', 'root', 'root');
+        $this->conn = new MySQL();
     }
 
     public function login(array $user)
