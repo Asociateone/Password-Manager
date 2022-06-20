@@ -29,7 +29,7 @@ class Register
 
         $arr = self::passwordHasher($password);
 
-        $query = "INSERT INTO password.Users (
+        $query = "INSERT INTO Users (
             `Username`, `Password`, `Email`, `Salt`
             ) VALUES (
                 '$username', '$arr[password]', '$email', '$arr[salt]'
@@ -53,7 +53,7 @@ class Register
 
     private function checkIfUsernameAlreadyExist(string $username)
     {
-        $query = "SELECT * FROM password.Users WHERE `Username` = '$username'";
+        $query = "SELECT * FROM Users WHERE `Username` = '$username'";
 
         $user = $this->conn->sendQuery($query);
 
@@ -64,7 +64,7 @@ class Register
 
     private function checkIfEmailAlreadyExist(string $email): void
     {
-        $query = "SELECT * FROM password.Users WHERE `Email` = '$email'";
+        $query = "SELECT * FROM Users WHERE `Email` = '$email'";
 
         $user = $this->conn->sendQuery($query);
 
