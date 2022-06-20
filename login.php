@@ -4,6 +4,6 @@
 
     use App\Auth\Login;
 
-    $hello = new Login();
+    $login = new Login();
 
-    $hello->login($_POST);
+    $login->login($_POST);
