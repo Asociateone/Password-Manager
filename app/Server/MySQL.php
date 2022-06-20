@@ -37,7 +37,7 @@ class MySQL
 
     public function createUserTable()
     {
-        $query = "CREATE TABLE password.Users (
+        $query = "CREATE TABLE Password_Manager.Users (
             ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             Username varchar(200) NOT NULL,
             Password varchar(255) NOT NULL,
@@ -50,7 +50,7 @@ class MySQL
 
     public function createAccountTable()
     {
-        $query = "CREATE TABLE password.User_Accounts (
+        $query = "CREATE TABLE Password_Manager.User_Accounts (
             ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             User_id int(11) NOT NULL,
             Username varchar(200) NOT NULL,
@@ -63,10 +63,14 @@ class MySQL
 
     public function sendQuery($query)
     {
+        self::connect();
+
         try {
             return mysqli_query($this->conn, $query);
         } catch (\Exception $e) {
             throw($e);
         }
+
+        self::disconnect();
     }
 }
