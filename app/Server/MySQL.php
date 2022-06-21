@@ -49,7 +49,7 @@ class MySQL
             User_id int(11) NOT NULL,
             Username varchar(200) NOT NULL,
             Password varchar(255) NOT NULL,
-            Email varchar(200) NOT NULL
+            Website varchar(200) NOT NULL
         ) ";
 
         return self::sendQuery($query);

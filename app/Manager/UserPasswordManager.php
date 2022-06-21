@@ -15,14 +15,28 @@ class UserPasswordManager
         $this->conn = new Mysql();
     }
 
-    public function addAccount($credentials)
+    public function addAccount()
     {
-        $this->conn->connect();
+        $website = StringCheck::InputTest($_REQUEST['website']);
+        $loginName = StringCheck::InputTest($_REQUEST['loginName']);
+        $password = PasswordCheck::passwordCheck($_REQUEST['password']);
+        $id = $_SESSION['user']['ID'];
+        $query = "INSERT INTO User_Accounts (`User_id`, `Username`, `Password`, `Website`) 
+            VALUES (
+                '$id',
+                '$loginName',
+                '$password',
+                '$website'
+            )";
 
-        $website = StringCheck::InputTest($credentials['website']);
-        $loginName = StringCheck::InputTest($credentials['loginName']);
-        $passwowrd = PasswordCheck::passwordCheck($credentials['password']);
+        $this->conn->sendQuery($query);
 
-        var_dump('hello world');
+        return header("Location: /pages/welcome.php");
+    }
+
+    public function getAccounts()
+    {
+        session_start();
+        var_dump($_SESSION);
     }
 }

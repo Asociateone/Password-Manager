@@ -18,8 +18,6 @@ class Register
 
     public function register(string $username, string $password, string $email): void
     {
-        $this->conn->connect();
-
         $username = StringCheck::inputTest($username);
         $password = PasswordCheck::passwordCheck($password);
         $email = StringCheck::inputTest($email);
@@ -30,14 +28,12 @@ class Register
         $arr = self::passwordHasher($password);
 
         $query = "INSERT INTO Users (
-            `Username`, `Password`, `Email`, `Salt`
+                `Username`, `Password`, `Email`, `Salt`
             ) VALUES (
                 '$username', '$arr[password]', '$email', '$arr[salt]'
             )";
 
         $this->conn->sendQuery($query);
-
-        $this->conn->disconnect();
     }
 
     private function passwordHasher(string $password): array
