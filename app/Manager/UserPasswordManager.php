@@ -34,7 +34,7 @@ class UserPasswordManager
         return header("Location: /pages/welcome.php");
     }
 
-    public function getAccounts()
+    public static function getAccounts()
     {
         session_start();
         var_dump($_SESSION);
