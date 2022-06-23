@@ -34,12 +34,20 @@ class UserPasswordManager
         return header("Location: /pages/welcome.php");
     }
 
-    public function getAccounts()
+    public static function getAccounts()
     {
         session_start();
 
+        $conn = new MySQL();
+
+        $conn->connect();
+
         $query = "SELECT * FROM `User_Accounts` WHERE `User_id` = '$_SESSION[user][user_id]'";
 
-        return $this->conn->sendQuery($query);
+        $conn->sendQuery($query);
+
+        $conn->disconnect();
+
+        return $conn->sendQuery($query);
     }
 }
