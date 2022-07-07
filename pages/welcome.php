@@ -38,9 +38,9 @@
                 <?php
                 foreach ($accounts as $account) {
                     echo "<tr>";
-                    echo "<td>$account[4]</td>";
-                    echo "<td>$account[2]</td>";
-                    echo "<td>$account[3]</td>";
+                        echo "<td>$account[4]</td>";
+                        echo "<td>$account[2]</td>";
+                        echo "<td>$account[3]</td>";
                     echo "</tr>";
                 }
                 ?>
