@@ -36,18 +36,18 @@ class UserPasswordManager
 
     public static function getAccounts()
     {
-        session_start();
-
         $conn = new MySQL();
 
         $conn->connect();
 
-        $query = "SELECT * FROM `User_Accounts` WHERE `User_id` = '$_SESSION[user][user_id]'";
+        $id = $_SESSION['user']['ID'];
 
-        $conn->sendQuery($query);
+        $query = "SELECT * FROM `User_Accounts` WHERE `User_id` = $id";
+
+        $accounts = $conn->sendQuery($query)->fetch_all();
 
         $conn->disconnect();
 
-        return $conn->sendQuery($query);
+        return $accounts;
     }
 }

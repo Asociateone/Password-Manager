@@ -29,6 +29,7 @@ class Login
 
             if (isset($dbUser) && self::verifyPassword($user['password'], $dbUser['Password'], $dbUser['Salt'])) {
                 session_start();
+
                 $_SESSION['user'] = $dbUser;
 
                 return header("Location: /pages/welcome.php");
